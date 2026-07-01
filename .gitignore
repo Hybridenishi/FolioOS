@@ -1,0 +1,5 @@
+# FolioOS scratch space (per work-state contract)
+.folioos/.scratch/
+
+# macOS
+.DS_Store

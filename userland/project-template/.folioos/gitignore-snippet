@@ -1,0 +1,2 @@
+# Add to the project's .gitignore — FolioOS scratch space is never committed
+.folioos/.scratch/
