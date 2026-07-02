@@ -2,6 +2,17 @@
 
 Every entry is a methodology diff: what changed about *how we work*, not just which files moved. Projects read this before adopting a new manifest release.
 
+## 0.2.0 — 2026-07-01
+
+**Model calibration becomes a defined procedure.** Previously, model-routing said non-Claude models "map by capability equivalence" without saying how; now there's a protocol.
+
+- **New workflow** `kernel/workflows/model-calibration.md`: qualify any model set (any vendor, open-source, local) into the routing tiers via probes. Placement = highest tier whose probes pass; route to the cheapest qualifier. Calibration is per (model × harness × config); ensembles (MoA stacks) calibrate as one unit. Placements are dated and perishable.
+- **New probe suite** `kernel/calibration/` (9 probes + rubric): reasoning (trap-plan, pushback, adversarial-verify), implementation (faithful-execution, swift-fluency, re-gate discipline), utility (doc-regeneration, release-notes, format-exact ADR). Probes are `type: template` — deliberately no schema change.
+- **model-routing.md** (v2): links the calibration protocol; adds the cheapest-qualifier placement rule and the ensemble-as-unit rule.
+- **claude-code adapter** (0.2.0): gains the dated tier-mapping table (Opus/Sonnet/Haiku placement, basis: vendor lineup + usage).
+
+Kernel 0.1.0 → 0.2.0 (minor: new workflow + documents, no contract changes). Pack unchanged.
+
 ## 0.1.0 — 2026-07-01
 
 Initial release.

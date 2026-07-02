@@ -1,6 +1,6 @@
 # Adapter: claude-code — Capability Manifest
 
-Adapter version: 0.1.0 · Targets: Claude Code (CLI / desktop / IDE)
+Adapter version: 0.2.0 · Targets: Claude Code (CLI / desktop / IDE)
 
 | Capability | Provided | Notes |
 |---|---|---|
@@ -19,3 +19,15 @@ Adapter version: 0.1.0 · Targets: Claude Code (CLI / desktop / IDE)
 ⚙️ = per-machine configuration; the compile procedure treats unconfigured MCP capabilities as absent and compiles the fallback rungs.
 
 Every workflow's **preferred** rung is available on a fully configured Claude Code — this adapter is the reference implementation.
+
+## Tier mapping — calibrated 2026-07-01
+
+Per [kernel/principles/model-routing.md](../../kernel/principles/model-routing.md); basis: vendor lineup + sustained real-world usage (the probe suite in `kernel/calibration/` postdates this mapping — run it formally when the lineup changes).
+
+| Tier | Model | Notes |
+|---|---|---|
+| reasoning | Opus-class (or above, e.g. Fable-class where available) | plans, review synthesis, adversarial verify, hard debugging |
+| implementation | Sonnet-class | code against approved plans, tests, refactors |
+| utility | Haiku-class | doc regeneration, release notes, ADR transcription — given precise briefs |
+
+Recalibration triggers: vendor lineup change, harness major version, or repeated real-work underperformance at a tier (demote first, re-probe second).

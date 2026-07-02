@@ -2,6 +2,16 @@
 
 The tested combination of component versions. Projects pin a manifest release, not individual components.
 
+## Release 0.2.0 — 2026-07-01
+
+| Component | Version | Notes |
+|---|---|---|
+| kernel | 0.2.0 | + model-calibration workflow and probe suite (`kernel/calibration/`) |
+| pack: ios-swift | 0.1.0 | unchanged |
+| adapter: claude-code | 0.2.0 | + dated tier-mapping table |
+| adapter: codex | stub | unchanged |
+| adapter: gemini | stub | unchanged |
+
 ## Release 0.1.0 — 2026-07-01
 
 | Component | Version | Notes |

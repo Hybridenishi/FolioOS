@@ -5,7 +5,7 @@ layer: kernel
 scope: on-plan
 requires: []
 overridable: true
-version: 1
+version: 2
 ---
 
 # Model Routing
@@ -20,7 +20,7 @@ Different work deserves different model tiers. Routing is policy, set here once,
 | **implementation** | Writing code against an approved plan, test authoring, refactors with clear intent | Sonnet-class |
 | **utility** | Doc regeneration, changelog entries, mechanical renames, formatting, summaries | Haiku-class, given precise starting instructions |
 
-Other vendors map by capability equivalence, recorded in that vendor's adapter.
+Any other model set (other vendors, open-source, local) is placed into these tiers via the [model-calibration workflow](../workflows/model-calibration.md) and its probe suite in `kernel/calibration/`; the resulting dated tier table lives in that agent's adapter `capabilities.md`. Ensembles (mixture-of-agents stacks, cascades) calibrate as a single unit in their deployment configuration. Placement rule: **highest tier whose probes pass; route to the cheapest qualifier for the tier the task needs.**
 
 ## Routing rules
 
