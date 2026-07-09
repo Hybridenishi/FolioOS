@@ -1,6 +1,6 @@
 # FolioOS Pin
 
-- **Manifest release:** 0.2.0
+- **Manifest release:** 0.3.0
 - **Pack:** ios-swift 0.1.0
 - **Adapter:** claude-code 0.2.0
 - **FolioOS checkout:** <path or submodule ref to the FolioOS repo>

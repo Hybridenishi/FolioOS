@@ -2,6 +2,16 @@
 
 The tested combination of component versions. Projects pin a manifest release, not individual components.
 
+## Release 0.3.0 — 2026-07-09
+
+| Component | Version | Notes |
+|---|---|---|
+| kernel | 0.3.0 | + cross-vendor-review workflow, review-packet template |
+| pack: ios-swift | 0.1.0 | unchanged |
+| adapter: claude-code | 0.2.0 | unchanged |
+| adapter: codex | 0.1.0 (reviewer slice) | + reviewer.md — external-reviewer role; full adapter still stub |
+| adapter: gemini | stub | unchanged |
+
 ## Release 0.2.0 — 2026-07-01
 
 | Component | Version | Notes |

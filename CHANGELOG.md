@@ -2,7 +2,15 @@
 
 Every entry is a methodology diff: what changed about *how we work*, not just which files moved. Projects read this before adopting a new manifest release.
 
-## 0.2.0 — 2026-07-01
+## 0.3.0 — 2026-07-09
+
+**Cross-vendor review: a second AI opinion as a defined, evidence-first procedure.** Adds training-level decorrelation — the review pipeline already decorrelates by evidence (personas) and by adversarial verify; a different vendor's model adds the axis prompts can't reach, and sidesteps self-preference bias.
+
+- **New workflow** `kernel/workflows/cross-vendor-review.md`: checkpoint-class work only; two modes (independent review — packet excludes the first agent's findings to prevent anchoring; findings verification — refute/confirm). Reports are append-only evidence; the synthesis surfaces **deltas** (agreement between vendors is low-information; disagreement is the product) and never silently adjudicates them. Built-in adoption experiment: after ~5 runs, if no delta ever changed a decision, record a candidate and stop — process must earn its maintenance.
+- **New template** `kernel/templates/review-packet.md`: self-contained packet contract (the external reviewer has no session context), with explicit anchoring rules.
+- **codex adapter reviewer slice** (0.1.0): calibration gate (R3 minimum), fixed prompts for both modes, invocation + report-filing procedure. Full codex adapter remains a stub.
+
+Kernel 0.2.0 → 0.3.0 (minor: new workflow + template, no contract changes).
 
 **Model calibration becomes a defined procedure.** Previously, model-routing said non-Claude models "map by capability equivalence" without saying how; now there's a protocol.
 

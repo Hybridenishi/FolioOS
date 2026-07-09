@@ -1,6 +1,6 @@
-# Adapter: codex — STUB
+# Adapter: codex — STUB (except the reviewer slice)
 
-Status: **not usable.** This stub exists so the seam exists; it becomes real when a Codex-family agent is actually adopted (build adapters against real tools, not imagined ones).
+Status: **full adapter not usable; the [reviewer slice](reviewer.md) (0.1.0) is live** — Codex as external reviewer for the cross-vendor-review workflow. The reviewer slice needs no compile pipeline because it consumes self-contained packets. The rest of this stub becomes real if/when Codex is adopted as a *building* agent (build adapters against real tools, not imagined ones).
 
 ## Capability sketch (verify against the tool at build time)
 - `file-system`, `shell`: expected ✅
