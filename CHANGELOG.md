@@ -2,6 +2,15 @@
 
 Every entry is a methodology diff: what changed about *how we work*, not just which files moved. Projects read this before adopting a new manifest release.
 
+## 0.4.0 — 2026-07-12
+
+**First run of the knowledge-promotion loop.** Three project candidates graduated from `Folio:.folioos/candidates/` after triage against the workflow's criteria (durable, general, evidence-backed); archived with outcomes noted.
+
+- **pack ios-swift 0.1.0 → 0.2.0** — `knowledge/common-pitfalls.md` (v2) gains a **Platform divergence (macOS)** section: silent Keychain write failures without a `keychain-access-groups` entitlement, and `navigationDestination` resolution stopping at the column root under `sidebarAdaptable`. Both shipped as real Folio incidents that passed every iOS test.
+- **codex adapter 0.1.0 → 0.2.0** — new **executor slice** (`executor.md`): Codex as an orchestrated building agent. Plan-authoring rules for prompt-contract executors (outcome-first steps, in-repo path references only, explicit file/test lists, conflict escape hatch), per-step effort routing with a no-self-escalation rule, and the mandatory orchestrator verification pass ("complete" is a claim to verify — three-for-three calibration lesson). Interface is the plan's `## Executor brief`; no compile pipeline.
+
+Kernel unchanged. Remaining candidates triaged: not-yet-ready ones stay in place with verdicts recorded in the triage notes.
+
 ## 0.3.0 — 2026-07-09
 
 **Cross-vendor review: a second AI opinion as a defined, evidence-first procedure.** Adds training-level decorrelation — the review pipeline already decorrelates by evidence (personas) and by adversarial verify; a different vendor's model adds the axis prompts can't reach, and sidesteps self-preference bias.

@@ -2,6 +2,16 @@
 
 The tested combination of component versions. Projects pin a manifest release, not individual components.
 
+## Release 0.4.0 — 2026-07-12
+
+| Component | Version | Notes |
+|---|---|---|
+| kernel | 0.3.0 | unchanged |
+| pack: ios-swift | 0.2.0 | common-pitfalls v2: + Platform divergence (macOS) section — first knowledge-promotion merge |
+| adapter: codex | 0.2.0 (reviewer + executor slices) | + executor.md — orchestrated building-agent role; full adapter still stub |
+| adapter: claude-code | 0.2.0 | unchanged |
+| adapter: gemini | stub | unchanged |
+
 ## Release 0.3.0 — 2026-07-09
 
 | Component | Version | Notes |

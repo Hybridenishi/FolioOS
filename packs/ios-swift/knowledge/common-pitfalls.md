@@ -5,7 +5,7 @@ layer: pack:ios-swift
 scope: on-demand
 requires: []
 overridable: true
-version: 1
+version: 2
 ---
 
 # Knowledge: Common Pitfalls
@@ -18,6 +18,10 @@ Failure patterns worth pattern-matching against during build and review. **This 
 - **`onAppear` as a lifecycle guarantee.** It can fire multiple times (or not when expected) in lazy containers and navigation. Idempotence or `.task` (which also cancels) is the fix.
 - **Whole-screen invalidation from over-broad observation.** A giant observable "app state" object touched by every view invalidates everything on any change. Split models along actual dependency lines.
 - **`GeometryReader` greed.** It takes all proposed space — wrapping content in it "to get the size" reflows the layout around it.
+
+## Platform divergence (macOS)
+- **macOS Keychain writes need an access group.** Data-protection Keychain writes (`kSecUseDataProtectionKeychain`) fail *silently* on macOS without a `keychain-access-groups` entitlement — the identical code passes every iOS test, so a cross-platform credential store can ship losing credentials on the Mac. `errSecMissingEntitlement` is the tell; assert write success in tests on both platforms.
+- **`navigationDestination` below the column root (`sidebarAdaptable`).** Under `TabView(.sidebarAdaptable)` on macOS, tab content renders as a split-view column, and `NavigationLink(value:)` only resolves destinations registered at the **column root** — declarations on pushed or nested views silently do nothing. iOS's `NavigationStack` resolves from nearest ancestors and hides the bug. Register destinations once at each stack root, never on pushed views; test navigation on macOS, not just iOS.
 
 ## Concurrency
 - **Unowned `Task { }` outliving its screen.** Fire-and-forget tasks writing to deallocated-screen state; structured concurrency or `.task` scoping is the fix, not `[weak self]` reflexes.

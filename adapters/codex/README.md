@@ -1,6 +1,6 @@
-# Adapter: codex — STUB (except the reviewer slice)
+# Adapter: codex — STUB (except the reviewer and executor slices)
 
-Status: **full adapter not usable; the [reviewer slice](reviewer.md) (0.1.0) is live** — Codex as external reviewer for the cross-vendor-review workflow. The reviewer slice needs no compile pipeline because it consumes self-contained packets. The rest of this stub becomes real if/when Codex is adopted as a *building* agent (build adapters against real tools, not imagined ones).
+Status: **full adapter not usable; two slices are live** — the [reviewer slice](reviewer.md) (0.1.0, external reviewer for cross-vendor-review) and the [executor slice](executor.md) (0.1.0, orchestrated building agent driven by a plan's `## Executor brief`). Neither needs a compile pipeline: the reviewer consumes self-contained packets; the executor consumes the plan itself. The rest of this stub becomes real if/when Codex is adopted as a *standalone* building agent with its own compiled instructions.
 
 ## Capability sketch (verify against the tool at build time)
 - `file-system`, `shell`: expected ✅
