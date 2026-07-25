@@ -1,11 +1,11 @@
 ---
 id: work/2026-07-approval-ergonomics
 type: plan
-status: draft
+status: done
 created: 2026-07-25
-approved_by:
-approved_at:
-plan_hash:
+approved_by: nate
+approved_at: 2026-07-25
+plan_hash: "sha256:fad46686cedf4fe62f8cb77e83a31b9469ec1659e30d7bb432a7147f145e60ff"
 ---
 
 # Approval ergonomics: split the mechanical hash from the human countersignature

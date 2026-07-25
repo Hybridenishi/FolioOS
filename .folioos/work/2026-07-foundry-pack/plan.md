@@ -3,9 +3,10 @@ id: work/2026-07-foundry-pack
 type: plan
 status: draft
 created: 2026-07-25
+body_hash: "sha256:7989e1a38952f55ec16a8d3e2e99727d8c467fd3e3ae9a0f207d8e624f2b886b"
 approved_by:
 approved_at:
-plan_hash:
+approval_code:
 ---
 
 # A Foundry VTT pack, and what a second pack reveals about the kernel

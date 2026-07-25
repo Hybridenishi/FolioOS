@@ -2,6 +2,20 @@
 
 Every entry is a methodology diff: what changed about *how we work*, not just which files moved. Projects read this before adopting a new manifest release.
 
+## 0.5.0 — 2026-07-25
+
+**Approval stops requiring a terminal.** The 64-character hash transcription was not performable from the devices approvals actually happen on, and the workaround — asking an agent to backfill the digest — produced frontmatter byte-identical to a properly approved plan. A degraded path indistinguishable from the real one voids the "the human saw this body" property across the whole log, silently. This release makes the mechanical half mechanical and the human half short enough to type anywhere.
+
+- **kernel 0.3.0 → 0.4.0** — **contract change.** `kernel/contract/work-state.md` (v2) splits `plan_hash` into `body_hash` (full digest, agent-written, explicitly *not* authorization) and `approval_code` (first 8 hex, human-typed, the binding check). The reasoning: drift detection comes entirely from recomputing at execute time, so a mis-presented code fails **closed**; the human's token only needs to be unforgeable by accident. See [ADR-0007](.folioos/decisions/0007-approval-code-countersignature.md).
+- **New: the approval ladder.** Three declared rungs — shell (human verifies), editor-only (human types the presented code), chat-only (human replies `approve <slug> <code>`; the agent transcribes **and** files `evidence/<yyyy-mm-dd>-approval.md` with the verbatim message). The floor rung is a knowing, bounded hole in rule 1: it is the rung already in use, and giving it a required artifact strictly increases what a reader can check.
+- **New: the approval card.** Agents must present the plan path, digest, and code whenever a plan enters *or re-enters* `draft`. New rule 7 makes a post-approval body edit void the approval explicitly, rather than leaving it as an inference from rule 2.
+- **Bug fix in the old rule, independent of the above.** "Content below the frontmatter's closing `---` (exclusive), byte-exact" admitted two faithful readings that hashed the same file to digests sharing no prefix, and a range-based `sed` extraction truncated bodies at their first embedded `---` — which the plan template itself contains. The extraction is now pinned as one normative command whose output *defines* the plan body. The contract's cross-agent portability promise did not previously hold.
+- **`kernel/templates/plan.md` (v2)** — new frontmatter fields; a required **"Approving this plan approves:"** block for plans carrying a policy or safety decision; per-step `Depends on:`. Folds in proposal 1 of candidate `2026-07-12-html-approval-views` — the part that needs no HTML and benefits every plan. Proposals 2–3 (derived `plan.view.html`) remain unpromoted.
+- **New probe I4** (`kernel/calibration/implementation-04-approval-boundary.md`) — covers the failure mode the split introduces: an agent reconciling a stale `approval_code` against a matching `body_hash` instead of stopping. Sibling to I3; the human's prompt is sincere and mistaken, never adversarial.
+- **claude-code adapter compile procedure** — the `on-plan` artifact must carry the approval card verbatim and state the kernel version it was compiled against, so a stale compile is visible at the approval gate rather than at execution.
+
+**Migration.** `plan_hash` is accepted as a deprecated alias for one minor; a plan carrying both schemas is a validation error. Every governed project must recompile its instruction artifacts. Plans approved before 2026-07-25 may show a one-time spurious mismatch from the pinned extraction — re-approve rather than investigate.
+
 ## 0.4.0 — 2026-07-12
 
 **First run of the knowledge-promotion loop.** Three project candidates graduated from `Folio:.folioos/candidates/` after triage against the workflow's criteria (durable, general, evidence-backed); archived with outcomes noted.
