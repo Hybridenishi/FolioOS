@@ -2,6 +2,21 @@
 
 Every entry is a methodology diff: what changed about *how we work*, not just which files moved. Projects read this before adopting a new manifest release.
 
+## 0.6.0 — 2026-07-26
+
+**The second pack.** `packs/foundry-vtt` is the kernel's first pack written after the kernel existed, against `foundryvtt-mcp` — a distributed system (stdio MCP server, Dockerized sidecar, browser-resident module) verified against a human-operated live world rather than an agent-launchable simulator. Drafting it against a differently-shaped project found three places the kernel's contracts had only ever been exercised by `ios-swift`'s shape of verification. See [ADR-0008](.folioos/decisions/0008-second-pack-kernel-boundaries.md).
+
+- **New: pack `foundry-vtt` 0.1.0.** Four standards (coupling tiers, mutation pattern, version targeting, deployment integrity), one checklist (visibility review — the highest-consequence write on `foundryvtt-mcp`'s roadmap, since a wrong hit point is corrected in seconds and a DM note rendered visible to a player cannot be un-seen), two knowledge files (common pitfalls, API surfaces). Content relocated from `foundryvtt-mcp`'s existing docs, not invented.
+- **kernel 0.4.0 → 0.5.0 — contract change.** Capability vocabulary gains `live-environment`: an externally-hosted, human-operated instance of the system under test, whose availability the agent cannot establish and must probe. Capability-model rule 1 — "every workflow's floor requires only `file-system`" — gains one narrow, named exception: a workflow requiring `live-environment` may declare a floor that produces a verification artifact (script plus expected receipt) and stops, rather than a file-system-only floor that verifies nothing. Every other capability's rule 1 obligation is unchanged.
+- **Document contract clarification.** The cascade already adds "all non-override pack documents (new `id`s)," which includes personas — a pack may contribute one, and the review pipeline picks it up without an adapter change. Stated explicitly rather than left as an inference two adapters could read differently.
+- **Testing policy gains a row: external-protocol boundaries.** Transport/bridge layers that cannot be unit-tested without inventing a fake protocol — extract and unit-test the pure decision logic, then require one live smoke check per protocol operation with its receipt recorded as evidence. `foundryvtt-mcp`'s confirmation/actor-utils/bridge-auth modules are the existence proof that the pure core is extractable.
+- **`kernel/standards/code-quality.md`** gains one bullet: read the changed record back and report before/after values before claiming success (the receipt rule) — general to any agent mutating external state, promoted rather than left pack-local.
+- **claude-code adapter 0.2.0**, unchanged version — capability manifest gains a `live-environment` row (⚙️, never agent-established; workflows requiring it always compile to the artifact-and-stop floor).
+
+**The risk, stated plainly, per the plan's own risk note:** rule 1 exists to stop workflows from being adapter features in disguise. Loosening it is defensible because no file-system-only floor verifies a live Foundry write — but that argument looks the same whether the rule is genuinely wrong or merely inconvenient for this one project. The exception is scoped narrowly (`requires: [live-environment]` only) for exactly this reason; a workflow reaching for it without a genuine unreachable-dependency story is the signal to revisit.
+
+**What this does not settle.** One consumer is thin evidence for a pack — `packs/foundry-vtt` is not yet proven general the way `ios-swift` is. `foundryvtt-mcp`'s own adoption of FolioOS (steps 6–8 of the governing plan) is not yet done; this release covers the kernel- and pack-facing half only.
+
 ## 0.5.0 — 2026-07-25
 
 **Approval stops requiring a terminal.** The 64-character hash transcription was not performable from the devices approvals actually happen on, and the workaround — asking an agent to backfill the digest — produced frontmatter byte-identical to a properly approved plan. A degraded path indistinguishable from the real one voids the "the human saw this body" property across the whole log, silently. This release makes the mechanical half mechanical and the human half short enough to type anywhere.

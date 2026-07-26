@@ -5,7 +5,7 @@ layer: kernel
 scope: always
 requires: []
 overridable: true
-version: 1
+version: 2
 ---
 
 # Testing Policy
@@ -20,6 +20,7 @@ Tests exist to prevent the headache class: a new feature or fix breaking somethi
 | Bug fix | A test that fails without the fix, **required, no exceptions** |
 | **System features** — import/export, backup/restore, migrations, sync | Scenario QA **required** per [checklists/system-feature-qa.md](../checklists/system-feature-qa.md), with evidence recorded; unit tests alone never pass these |
 | Pure UI composition | Case-by-case; prefer making logic testable by extracting it out of views |
+| **External-protocol boundaries** — transport/bridge layers that can't be unit-tested without inventing a fake protocol | Extract and unit-test the pure decision logic; **required**, one live smoke check per protocol operation, with its receipt recorded as evidence |
 | Generated docs, config, mechanical renames | None beyond compile/build passing |
 
 ## Rules

@@ -5,7 +5,7 @@ layer: kernel
 scope: on-demand
 requires: []
 overridable: false
-version: 1
+version: 2
 ---
 
 # Capability Model
@@ -27,6 +27,7 @@ Documents are abstracted by the document contract; **capabilities are abstracted
 | `mcp:github` | GitHub via MCP (PRs, issues, reviews) |
 | `mcp:notion` | Notion via MCP (doc/decision sync) |
 | `mcp:figma` | Figma via MCP (design source of truth) |
+| `live-environment` | An externally-hosted, human-operated instance of the system under test, whose availability the agent cannot establish and must probe |
 
 Add capabilities by amending this vocabulary (kernel minor bump). Never let a workflow reference a capability that isn't listed here.
 
@@ -47,7 +48,7 @@ Every `workflow` document that requires more than `file-system` **must** declare
 
 Rules:
 
-1. The floor of every workflow requires only `file-system`. If a workflow can't express a file-system-only floor, it isn't a workflow — it's an adapter feature, and belongs in the adapter.
+1. The floor of every workflow requires only `file-system` — with one narrow exception. A workflow whose subject `requires: [live-environment]` may instead declare a floor that *produces an artifact and stops*: the verification script plus the expected receipt, handed to a human to run. This is still a floor, not a skip — it names exactly what verification looks like rather than omitting it. The exception exists because a `live-environment` precondition (a deployed sidecar, a hard-refreshed authenticated browser session) cannot be reduced to `file-system` no matter how manual the fallback gets, unlike every other capability, where a file-system-only rung is always expressible as "read the code and reason about it by hand." For every workflow that does not require `live-environment`, rule 1 is unchanged: if it can't express a file-system-only floor, it isn't a workflow — it's an adapter feature, and belongs in the adapter. A workflow reaching for this exception without a genuine `live-environment` requirement is exactly the adapter-feature-in-disguise this rule exists to catch.
 2. Degradation is *declared by the workflow author*, not improvised by the agent at run time. An agent on a rung follows that rung's text.
 3. Outward-facing capabilities (`mcp:*`, anything that publishes) are additionally governed by the autonomy model's checkpoint rules — having a capability is not authorization to use it.
 
