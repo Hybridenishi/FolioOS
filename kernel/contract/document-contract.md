@@ -71,7 +71,7 @@ Adapters implement exactly this algorithm — it is specified once, here, so eve
 
 1. Collect all kernel documents, indexed by `id`.
 2. Apply pack overrides (documents in the active pack with `type: override`) to their targets, in pack file order.
-3. Add all non-override pack documents (new `id`s).
+3. Add all non-override pack documents (new `id`s) — including personas: a persona is a document like any other, so a pack may contribute one, and the review pipeline picks up whatever personas are present in the merged set without adapter-side changes.
 4. Apply project overrides (from `.folioos/overrides/`) to the result.
 5. Compile the merged set by `scope`, honoring `requires` against the adapter's capability manifest: a document requiring an unavailable capability compiles to its declared fallback (see capability-model) or is omitted with a logged warning — never silently half-included.
 

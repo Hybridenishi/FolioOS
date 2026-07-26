@@ -2,6 +2,17 @@
 
 The tested combination of component versions. Projects pin a manifest release, not individual components.
 
+## Release 0.6.0 — 2026-07-26
+
+| Component | Version | Notes |
+|---|---|---|
+| kernel | 0.5.0 | **contract change** — capability vocabulary gains `live-environment`; capability-model rule 1 gains a narrow named exception (artifact-and-stop floor) for workflows requiring it. Document contract makes explicit that packs may contribute personas. Testing policy gains a row for unmockable external-protocol boundaries. See [ADR-0008](.folioos/decisions/0008-second-pack-kernel-boundaries.md). |
+| pack: foundry-vtt | 0.1.0 | **new** — first pack written after the kernel existed rather than alongside it. Four standards (coupling tiers, mutation pattern, version targeting, deployment integrity), one checklist (visibility review), two knowledge files (common pitfalls, API surfaces). |
+| pack: ios-swift | 0.2.0 | unchanged |
+| adapter: claude-code | 0.2.0 | capability manifest gains a `live-environment` row (⚙️, never agent-established) |
+| adapter: codex | 0.2.0 (reviewer + executor slices) | unchanged |
+| adapter: gemini | stub | unchanged |
+
 ## Release 0.5.0 — 2026-07-25
 
 | Component | Version | Notes |

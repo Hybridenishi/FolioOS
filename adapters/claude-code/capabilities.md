@@ -15,6 +15,7 @@ Adapter version: 0.2.0 · Targets: Claude Code (CLI / desktop / IDE)
 | `mcp:github` | ⚙️ | When the GitHub MCP server (or `gh` CLI as functional equivalent) is configured |
 | `mcp:notion` | ⚙️ | When the Notion MCP server is connected |
 | `mcp:figma` | ⚙️ | When the Figma MCP server is connected |
+| `live-environment` | ⚙️ | Never established by the agent itself; ⚙️ marks that a human-operated instance may or may not be reachable at run time, so workflows requiring it always compile to the artifact-and-stop floor (capability-model rule 1) |
 
 ⚙️ = per-machine configuration; the compile procedure treats unconfigured MCP capabilities as absent and compiles the fallback rungs.
 
