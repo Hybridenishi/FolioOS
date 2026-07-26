@@ -17,6 +17,7 @@ Platform-agnostic rules. Language specifics live in packs.
 - **Comments state constraints, not narration.** Write a comment only for what the code can't say: a non-obvious invariant, a workaround with its trigger, a deliberate deviation. Never "what the next line does" or "why my change is correct."
 - **No dead code.** Unused paths are deleted, not commented out — git remembers.
 - **Errors are handled or propagated, never swallowed.** An empty catch needs a comment defending itself.
+- **Verify writes to external state by reading them back.** Report before/after values from a fresh read, never from what you sent — what you sent is a hypothesis, what you read back is the fact.
 - **Names tell the truth.** A function named `save` that also syncs is a bug in the name.
 - **No speculative generality.** Build for the current requirement; extension points need a concrete second use case (or an ADR).
 - **Every bug fix ships with a test that fails without it.** (See [testing-policy](testing-policy.md).)
