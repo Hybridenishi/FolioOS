@@ -11,7 +11,7 @@ Turns kernel ⊕ pack ⊕ project overrides into Claude Code artifacts. Manual t
 | scope | Compiles to |
 |---|---|
 | `always` | `CLAUDE.md` — **distilled**, see budget below |
-| `on-plan` | `.claude/commands/plan.md` (a `/plan` command embedding the plan template, model routing, os-targeting callouts, and the work-state rules) |
+| `on-plan` | `.claude/commands/plan.md` (a `/plan` command embedding the plan template, model routing, os-targeting callouts, the work-state rules, and the approval-card requirement) |
 | `on-review` | `.claude/commands/folio-review.md` (pipeline orchestration) + one agent per persona in `.claude/agents/` (each agent's prompt = its persona file + its checklists, and *only* its evidence inputs) |
 | `on-release` | `.claude/commands/release.md` (workflow + both readiness checklists) |
 | `on-demand` | Not compiled — referenced by path (`.folioos/` and the FolioOS checkout are the library; agents Read them when a compiled artifact points there) |
@@ -40,5 +40,6 @@ Over budget → demote or distill harder; never widen the budget. When compiled 
 2. Apply the cascade; log every override applied (target, operation, rationale).
 3. Emit CLAUDE.md per the budget structure; count lines; fail if > 150.
 4. Emit commands and persona agents; for each document whose `requires:` includes an unavailable capability, compile the declared fallback rung and note it in the artifact header.
-5. Stamp every emitted file with a header: manifest release, component versions, compile date — so a stale compile is detectable at a glance.
-6. Commit the emitted artifacts to the project (they are build outputs, but committed ones — the project must work for an agent that can't run the compile).
+5. Stamp every emitted file with a header: manifest release, component versions, compile date — so a stale compile is detectable at a glance. The `on-plan` artifact additionally states the **kernel version** it was compiled against, in a form the agent can read back at run time (`Compiled against kernel: <version>`).
+6. Verify the emitted `on-plan` artifact carries the approval-card block from the [work-state contract](../../kernel/contract/work-state.md) verbatim. The card is what makes the approval code reachable by a human without a shell; an `on-plan` artifact that omits it silently reintroduces the transcription burden the contract removed.
+7. Commit the emitted artifacts to the project (they are build outputs, but committed ones — the project must work for an agent that can't run the compile).

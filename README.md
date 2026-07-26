@@ -17,7 +17,7 @@ Resolution cascade: **kernel → pack → project overrides**. Overrides are exp
 
 1. **[Document contract](kernel/contract/document-contract.md)** — the frontmatter schema every kernel/pack document conforms to, and the cascade merge semantics. The kernel's real product is this schema; the markdown is content.
 2. **[Capability model](kernel/contract/capability-model.md)** — workflows are written against abstract capabilities (`subagents`, `run-app`, `mcp:github`…) with declared fallback ladders, so they degrade gracefully on less-capable agents.
-3. **[Work-state](kernel/contract/work-state.md)** — plans are committed artifacts with an explicit state machine (`draft → approved → executing → done`). Approval is recorded by content hash, so *any* agent in *any* session can answer "am I authorized to execute this?" by reading a file.
+3. **[Work-state](kernel/contract/work-state.md)** — plans are committed artifacts with an explicit state machine (`draft → approved → executing → done`). Approval is recorded as a short content-derived code the human types, so *any* agent in *any* session can answer "am I authorized to execute this?" by reading a file — and approving is possible from a phone.
 
 ## Core principles
 

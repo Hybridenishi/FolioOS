@@ -2,6 +2,16 @@
 
 The tested combination of component versions. Projects pin a manifest release, not individual components.
 
+## Release 0.5.0 — 2026-07-25
+
+| Component | Version | Notes |
+|---|---|---|
+| kernel | 0.4.0 | **contract change** — work-state v2: `plan_hash` → `body_hash` + `approval_code`, approval ladder, approval card, pinned body extraction. Plan template v2. New probe I4. Recompile required. |
+| pack: ios-swift | 0.2.0 | unchanged |
+| adapter: claude-code | 0.2.0 | compile procedure: `on-plan` carries the approval card and its kernel version |
+| adapter: codex | 0.2.0 (reviewer + executor slices) | unchanged; **not yet updated for work-state v2** |
+| adapter: gemini | stub | unchanged |
+
 ## Release 0.4.0 — 2026-07-12
 
 | Component | Version | Notes |

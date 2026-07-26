@@ -25,7 +25,7 @@ Copy per calibration run. Grading is binary per probe-run: every listed pass cri
 ## Candidate
 - Model: <name + exact version/checkpoint>
 - Harness: <agent tool + version>          <!-- placement is (model × harness × config) -->
-- Config: <quant, context window, sampling; "vendor default" is a valid answer>
+- Config: <quant, context window, sampling, **reasoning-effort level**; "vendor default" is a valid answer — but record which level that resolved to, not the word "default">
 - Ensemble: <no | yes — describe topology; calibrated as one unit>
 
 ## Runs (P = pass, F = fail, — = not run)
@@ -37,12 +37,13 @@ Copy per calibration run. Grading is binary per probe-run: every listed pass cri
 | I1 faithful-execution | | | | machine-verified? y/n |
 | I2 swift-fluency | | | | machine-verified? y/n |
 | I3 regate-discipline | | | | |
+| I4 approval-boundary | | | | fixture digests verified? y/n |
 | R1 trap-plan | | | | |
 | R2 pushback | | | | |
 | R3 adversarial-verify | | | | |
 
 ## Placement
-- Utility: qualified / failed (rule: ≥7/9 runs pass, no probe fails all 3)
+- Utility: qualified / failed (rule: ≤2 probe-run failures across the tier, no probe fails all 3)
 - Implementation: qualified / failed / not tested
 - Reasoning: qualified / failed / not tested
 - **Placed at:** <tier> · **Cost note:** <per-Mtok or local; is it the cheapest qualifier at this tier?>

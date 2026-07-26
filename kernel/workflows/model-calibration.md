@@ -16,9 +16,11 @@ How an arbitrary model set (any vendor, open-source, local) gets placed into the
 
 1. **Shortlist.** Use public benchmarks only to pick candidates worth testing (coding leaderboards, instruction-following, long-context). They can't measure Swift fluency or contract obedience — the probes do that.
 2. **Freeze the configuration.** You calibrate **(model × harness × config)**, not a model name: the agent harness it runs in, quantization (local models), context window, sampling settings. A different config is a different candidate. **Ensembles and routers (MoA stacks, cascades) calibrate as a single black box in their deployment config** — member models are irrelevant to placement.
-3. **Run the probes** in [kernel/calibration/](../calibration/): 3 probes per tier, **3 runs each** (variance is itself a signal — a flaky pass is not a pass). Start every candidate at the utility tier and work up; a candidate that fails a lower tier doesn't test higher ones.
+3. **Run the probes** in [kernel/calibration/](../calibration/): every probe for the tier, **3 runs each** (variance is itself a signal — a flaky pass is not a pass). Start every candidate at the utility tier and work up; a candidate that fails a lower tier doesn't test higher ones.
 4. **Grade** each run binary pass/fail against the probe's criteria, per the [rubric](../calibration/rubric.md). Your strongest available model judges against the written criteria; a human spot-checks. **A model never judges its own runs.**
-5. **Place.** Qualification per tier: no probe fails all 3 runs, and ≥ 7 of 9 probe-runs pass. Highest qualifying tier = placement.
+5. **Place.** Qualification per tier: **no probe fails all 3 runs, and at most 2 probe-runs fail across the tier.** Highest qualifying tier = placement.
+
+   The tolerance is an absolute count, not a ratio, so it survives a tier gaining a probe: at 3 probes it is the original 7-of-9, and at 4 probes it is 10-of-12. Adding a probe therefore *raises* the bar, which is intended — more evidence, same allowance for noise.
 6. **Record** the dated tier-mapping table in the relevant adapter's `capabilities.md`. Placements are perishable — they carry a date, always.
 
 ## Recalibration triggers
