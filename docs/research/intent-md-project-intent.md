@@ -455,6 +455,14 @@ build stages.
   spine does not fit a standing charter. But it is the cheapest experiment, and running it for one
   project before committing to a kernel change is a defensible sequencing choice.
 
+  **Run on `foundryvtt-mcp`, 2026-09-05 — answered and closed. It does not close the gap.**
+  2 of 6 template sections fit, 1 partially, 2 badly, 1 is dead, and the section carrying the most
+  weight — standing constraints — is missing from the template entirely (a constraint is not a
+  non-goal). The run also produced a reframe that revises §3: the intent was *already articulated*,
+  spread across three documents with three different lifecycles, so the problem is consolidation
+  rather than authoring. Full result:
+  [intent-prd-experiment-foundryvtt-mcp.md](intent-prd-experiment-foundryvtt-mcp.md).
+
 - **Do nothing; product intent lives in Second-Brain.** The vault already has
   `Development/<Project>/` hubs with Decisions, Rejected-Alternatives, Ideas and History — arguably
   the natural home. **Rejected, but the reasoning matters:** the vault's own `AGENTS.md` sets an
@@ -473,7 +481,10 @@ build stages.
 - Whether the gap has actually cost anything yet. No incident is on record; the argument is
   structural. Worth a deliberate look back at the `Folio` and `foundryvtt-mcp` work directories for
   a plan that would have been shaped differently by a standing intent file — that check would
-  convert this from a plausible gap into an evidenced one.
+  convert this from a plausible gap into an evidenced one. *(Partially advanced: the
+  `foundryvtt-mcp` PRD experiment evidenced the template misfit and the scattering, but still not
+  an incident where the absence cost something. `Folio` remains unexamined and is the
+  differently-shaped second run.)*
 - Whether one file is the right granularity for a project with several distinct surfaces
   (`foundryvtt-mcp` is a server, a sidecar and a browser module).
 - Whether intent should eventually be a first-class `type:` — deferred to a demonstrated need, per
