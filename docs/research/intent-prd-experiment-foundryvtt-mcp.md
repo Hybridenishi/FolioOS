@@ -69,6 +69,14 @@ to rediscover the misfit.
 
 ## Result 2 — the reframe (the more valuable finding)
 
+> **Revised 2026-09-05 by [experiment 2](intent-experiment-azora-lorebot.md).** The conclusion
+> below is true of *this* project and does not generalise. A second subject — same author, same
+> domain, but written before FolioOS existed — had 475 lines of documentation and its most
+> consequential rule appeared in none of them; that rule lived only in code. The accurate model is
+> **three** intake modes (intent in prose, intent in code, intent absent), not the two implied
+> here. Read this section as one mode of three.
+
+
 `foundryvtt-mcp` **already had** substantial standing product intent before this experiment.
 `ROADMAP.md`'s "Objective" is a product statement carrying an explicit, load-bearing non-goal:
 
@@ -136,6 +144,9 @@ question wearing a constraint's clothes.**
   verbatim: `foundryvtt-mcp` is unusually well documented, so "the intent already exists, scattered"
   may be a property of this repo rather than a general finding. `Folio` is the obvious second run,
   and it is the differently-shaped one (an app, not a server).
+  **Settled 2026-09-05:** it was a property of this repo. See
+  [experiment 2](intent-experiment-azora-lorebot.md), which ran `azora-lorebot` instead and found
+  the opposite.
 - **The draft is unratified.** Its accuracy as a charter is unverified until a human corrects it;
   what is verified is the template fit, which does not depend on the content being right.
 - **The persona question from §10 is untouched.** Nothing here bears on who should own a periodic

@@ -463,6 +463,14 @@ build stages.
   rather than authoring. Full result:
   [intent-prd-experiment-foundryvtt-mcp.md](intent-prd-experiment-foundryvtt-mcp.md).
 
+  **Second run on `azora-lorebot`, 2026-09-05 — revises the above.** A project written a year
+  before FolioOS existed had 475 lines of documentation and mentioned its most consequential rule
+  (spoiler control) in none of them; that rule lived only in code. So intake has **three** modes,
+  not two — intent in prose, intent in code, intent absent — and §5's new-vs-existing split is the
+  wrong axis; the right one is *recoverable from the artifact* vs *must be asked*. That run also
+  produced the near-incident this note's §7 says it lacks. Full result:
+  [intent-experiment-azora-lorebot.md](intent-experiment-azora-lorebot.md).
+
 - **Do nothing; product intent lives in Second-Brain.** The vault already has
   `Development/<Project>/` hubs with Decisions, Rejected-Alternatives, Ideas and History — arguably
   the natural home. **Rejected, but the reasoning matters:** the vault's own `AGENTS.md` sets an
