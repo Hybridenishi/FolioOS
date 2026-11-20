@@ -5,7 +5,7 @@ layer: kernel
 scope: on-plan
 requires: []
 overridable: true
-version: 2
+version: 3
 ---
 
 # Template: Implementation Plan
@@ -51,7 +51,8 @@ approval_code:
 - **What & why:** <the change and its purpose>
 - **Depends on:** <none | step N — so parallel and blocking work is readable at a glance>
 - **Risk:** <none | ⚠️ description — e.g. "touches persistence: data-loss class">
-- **Model:** reasoning | implementation | utility · **Effort:** S | M | L
+- **Model:** <tier or work shape> (@ <reasoning effort>) · **Size:** S | M | L
+- **Routing notes:** <optional: Vendor-Split | parallel-safe | sequential shared-state | vision required>
 
 ## UI                    <!-- design-affecting plans: mockups or written descriptions -->
 <Mockup images, or a written description of each screen/state.>

@@ -3,7 +3,9 @@ id: candidates/2026-07-25-effort-as-routing-axis
 type: knowledge
 layer: project
 scope: on-demand
-status: candidate
+status: promoted
+promoted_in: manifest 0.7.0 (kernel 0.6.0)
+promoted_at: 2026-11-20
 proposed_target: kernel/principles/model-routing
 ---
 **Learning:** The tier model in `model-routing.md` assumes tier selection *is* model
@@ -42,3 +44,5 @@ placement and to state that a probe result is scoped to the effort it ran at. Re
 adapter tier table. Explicitly **out of scope**: naming specific models in the kernel — the
 tier abstraction exists so the kernel survives lineup changes, and this candidate is an
 argument for a second axis, not for hardcoding vendors.
+
+**Outcome:** Promoted in Manifest `0.7.0` (`kernel 0.6.0`, 2026-11-20) via `kernel/principles/model-routing.md` (v3), `kernel/workflows/model-calibration.md` (v2), `kernel/templates/plan.md` (v3, renaming task `Effort` → `Size`), `adapters/claude-code/capabilities.md` (`0.3.0`), and [ADR-0009](../decisions/0009-multi-provider-routing-and-orchestration.md).
