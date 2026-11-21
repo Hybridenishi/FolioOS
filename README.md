@@ -7,7 +7,7 @@
 | Layer | Analogy | Contents | Rate of change | Tool-specific |
 |---|---|---|---|---|
 | **Kernel** | kernel | Contracts, principles, personas, standards, workflows, templates, checklists | Rarely, deliberately | No |
-| **Packs** | drivers | Platform knowledge (`packs/ios-swift/` today) | Per platform cycle | No |
+| **Packs** | drivers | Platform knowledge (`packs/ios-swift/`, `packs/foundry-vtt/`) | Per platform cycle | No |
 | **Adapters** | syscall interface | Compilers from kernel+packs into per-agent artifacts | Per vendor | Yes |
 | **Userland** | processes | Each governed app: overrides, decisions, work-state, candidates | Constantly | No |
 
@@ -23,7 +23,7 @@ Resolution cascade: **kernel → pack → project overrides**. Overrides are exp
 
 - **Plan → Approve → Execute.** Agents plan, stop, and wait for human approval before building. See [autonomy-model.md](kernel/principles/autonomy-model.md).
 - **Pushback is a deliverable.** Agreement is not. See [working-agreement.md](kernel/principles/working-agreement.md).
-- **Model routing.** Deep reasoning, implementation, and mechanical work go to different model tiers. See [model-routing.md](kernel/principles/model-routing.md).
+- **Model routing.** Tasks route by tier, reasoning effort, and project work shape across active providers. See [model-routing.md](kernel/principles/model-routing.md) and [routing-discovery.md](kernel/workflows/routing-discovery.md).
 - **Files first.** Everything FolioOS does must be doable by hand with a file system and the documented procedures. Tooling is convenience, never a dependency.
 - **The OS learns.** Project discoveries flow back up via the [knowledge promotion loop](kernel/workflows/knowledge-promotion.md).
 
@@ -45,8 +45,8 @@ See [docs/adopting-folioos.md](docs/adopting-folioos.md). Short version: copy `u
 
 ```
 kernel/          contract/ principles/ personas/ standards/ workflows/ templates/ checklists/
-packs/ios-swift/ pack.md standards/ checklists/ knowledge/
-adapters/        claude-code/ codex/ gemini/
+packs/           ios-swift/ foundry-vtt/
+adapters/        claude-code/ t3-code/ codex/ gemini/
 userland/        project-template/
 docs/            adopting-folioos.md design/
 .folioos/        FolioOS's own decision log (we dogfood)
