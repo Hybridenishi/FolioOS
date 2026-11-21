@@ -5,27 +5,29 @@ layer: kernel
 scope: on-demand
 requires: []
 overridable: true
-version: 1
+version: 2
 ---
 
 # Workflow: Model Calibration
 
-How an arbitrary model set (any vendor, open-source, local) gets placed into the [model-routing](../principles/model-routing.md) tiers. You're not ranking models in general — you're qualifying them for roles: **place each candidate at the highest tier whose probes it passes; route work to the cheapest qualifier for the tier the task needs.**
+How an arbitrary model set (any vendor, open-source, local) gets placed into the [model-routing](../principles/model-routing.md) tiers. You're not ranking models in general — you're qualifying them for roles: **place each candidate at the highest tier whose probes pass at a given `(model × harness × effort)`; route work to the cheapest qualifying `(model, effort)` combination for the tier the task needs.**
+
+Whereas calibration establishes global baseline placements per `(model × harness × effort)`, [routing-discovery.md](routing-discovery.md) maps a *specific project's* work shapes, blast-radius seams, and incident exclusions onto the live provider lineup.
 
 ## Protocol
 
-1. **Shortlist.** Use public benchmarks only to pick candidates worth testing (coding leaderboards, instruction-following, long-context). They can't measure Swift fluency or contract obedience — the probes do that.
-2. **Freeze the configuration.** You calibrate **(model × harness × config)**, not a model name: the agent harness it runs in, quantization (local models), context window, sampling settings. A different config is a different candidate. **Ensembles and routers (MoA stacks, cascades) calibrate as a single black box in their deployment config** — member models are irrelevant to placement.
+1. **Shortlist.** Use public benchmarks only to pick candidates worth testing (coding leaderboards, instruction-following, long-context). They can't measure domain/language fluency or contract obedience — the probes do that.
+2. **Freeze the configuration.** You calibrate **(model × harness × effort × config)**, not a model name alone: the agent harness it runs in, reasoning effort level (`low` / `medium` / `high` / `xhigh` / `max` or equivalent), quantization (local models), context window, and sampling settings. **Every probe result is scoped strictly to the effort level it ran at** — passing at `xhigh` says nothing about `low`. A different effort or config is a different candidate. **Ensembles and routers (MoA stacks, cascades) calibrate as a single black box in their deployment config** — member models are irrelevant to placement.
 3. **Run the probes** in [kernel/calibration/](../calibration/): every probe for the tier, **3 runs each** (variance is itself a signal — a flaky pass is not a pass). Start every candidate at the utility tier and work up; a candidate that fails a lower tier doesn't test higher ones.
 4. **Grade** each run binary pass/fail against the probe's criteria, per the [rubric](../calibration/rubric.md). Your strongest available model judges against the written criteria; a human spot-checks. **A model never judges its own runs.**
-5. **Place.** Qualification per tier: **no probe fails all 3 runs, and at most 2 probe-runs fail across the tier.** Highest qualifying tier = placement.
+5. **Place.** Qualification per tier: **no probe fails all 3 runs, and at most 2 probe-runs fail across the tier.** Highest qualifying tier at that effort = placement.
 
    The tolerance is an absolute count, not a ratio, so it survives a tier gaining a probe: at 3 probes it is the original 7-of-9, and at 4 probes it is 10-of-12. Adding a probe therefore *raises* the bar, which is intended — more evidence, same allowance for noise.
-6. **Record** the dated tier-mapping table in the relevant adapter's `capabilities.md`. Placements are perishable — they carry a date, always.
+6. **Record** the dated tier-mapping table — including the **effort** level in every row — in the relevant adapter's `capabilities.md`. Placements are perishable — they carry a date, always.
 
 ## Recalibration triggers
 
-- The vendor updates the model (silently or otherwise) or you change harness, quant, or context config.
+- The vendor updates the model (silently or otherwise) or you change harness, effort level, quant, or context config.
 - A placed model repeatedly underperforms in real work — real-work failure outranks a probe pass; demote first, re-probe second.
 - New tier-relevant probes get promoted from `candidates/` (a real incident that a tier should have caught is exactly the kind of learning the promotion loop exists for).
 

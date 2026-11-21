@@ -5,20 +5,21 @@ layer: kernel
 scope: on-demand
 requires: []
 overridable: false
-version: 2
+version: 3
 ---
 
 # Capability Model
 
 Documents are abstracted by the document contract; **capabilities are abstracted here.** Agents differ in what they can *do* — spawn subagents, run the app, reach MCP servers — and a workflow written against one agent's abilities is unportable. So workflows declare abstract capability requirements and explicit fallback ladders, and each adapter publishes a manifest of what its agent provides.
 
-## Capability vocabulary (v1)
+## Capability vocabulary (v2)
 
 | Capability | Meaning |
 |---|---|
 | `file-system` | Read/write project files. **The floor — every agent is assumed to have it.** |
 | `shell` | Execute build/test/tooling commands |
 | `subagents` | Spawn parallel or specialized sub-contexts |
+| `multi-provider` | Query available providers/models and dispatch subagents or turns to a chosen provider, model, and effort/options (optionally in an isolated workspace) |
 | `plan-mode` | A native plan-then-approve mechanism (absent → use work-state files alone) |
 | `run-tests` | Execute the project test suite and read results |
 | `run-app` | Launch the app/simulator and observe behavior |

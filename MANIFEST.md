@@ -2,6 +2,18 @@
 
 The tested combination of component versions. Projects pin a manifest release, not individual components.
 
+## Release 0.7.0 — 2026-11-20
+
+| Component | Version | Notes |
+|---|---|---|
+| kernel | 0.6.0 | **contract change** — `capability-model` (v3) adds `multi-provider`. `model-routing` (v3) adds reasoning `effort` axis (promoting candidate `2026-07-25-effort-as-routing-axis`), extensible work-shape starter catalog, capability/evidence exclusions, Vendor-Split, Two-Strike escalation, 4-part delegation brief, mandatory Lead verification pass, and parallel vs. shared-state sequential seams. New `routing-discovery` workflow (v1). `review-pipeline` (v2), `cross-vendor-review` (v2), and `model-calibration` (v2) remove Swift/iOS leaks and support `multi-provider` + `effort`. `templates/plan` (v3) renames step `Effort` → `Size`. `git-workflow` (v2) adds multi-provider authorship & trailer rule. See [ADR-0009](.folioos/decisions/0009-multi-provider-routing-and-orchestration.md). |
+| pack: foundry-vtt | 0.1.0 | unchanged |
+| pack: ios-swift | 0.2.0 | unchanged |
+| adapter: claude-code | 0.3.0 | capability manifest adds `multi-provider` (⚙️) and dated `(tier, effort)` table; compile procedure adds compact `CLAUDE.md` routing pointer, multi-provider `/folio-review` dispatch, and persona `model:` compilation |
+| adapter: t3-code | 0.1.0 (orchestrator slice) | **new** — lightweight orchestrator slice mapping `multi-provider` onto T3 Code (`orchestrator_capabilities`, `delegate_task`, `isolation: "worktree"`, shared-state serialization, Lead verification) |
+| adapter: codex | 0.2.0 (reviewer + executor slices) | unchanged |
+| adapter: gemini | stub | unchanged |
+
 ## Release 0.6.0 — 2026-07-26
 
 | Component | Version | Notes |
