@@ -39,7 +39,7 @@ Every change lands in [CHANGELOG.md](CHANGELOG.md) as a human-readable methodolo
 
 ## Adopting FolioOS in a project
 
-See [docs/adopting-folioos.md](docs/adopting-folioos.md). Short version: copy `userland/project-template/.folioos/` into your repo, pin the manifest version, run the adapter compile procedure for your agent.
+See [docs/starter-guide.md](docs/starter-guide.md) for a plain-language walkthrough and copy-paste prompts, and [docs/adopting-folioos.md](docs/adopting-folioos.md) for the step-by-step adoption procedure. Short version: copy `userland/project-template/.folioos/` into your repo, pin the manifest version, run routing discovery if multi-provider, and run the adapter compile procedure for your agent.
 
 ## Repository map
 
@@ -48,6 +48,6 @@ kernel/          contract/ principles/ personas/ standards/ workflows/ templates
 packs/           ios-swift/ foundry-vtt/
 adapters/        claude-code/ t3-code/ codex/ gemini/
 userland/        project-template/
-docs/            adopting-folioos.md design/
+docs/            starter-guide.md adopting-folioos.md design/
 .folioos/        FolioOS's own decision log (we dogfood)
 ```

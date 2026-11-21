@@ -1,5 +1,7 @@
 # Adopting FolioOS in a Project
 
+> **Looking for copy-paste prompts or a quick day-to-day overview?** See [starter-guide.md](starter-guide.md).
+
 Files-first promise: every step below is a hand-operable procedure. Future tooling (`folioos init/update/doctor`) may automate them, but must do exactly this — if the tooling ever rots, this document is still the system.
 
 ## New project
