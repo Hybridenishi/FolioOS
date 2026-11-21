@@ -5,7 +5,7 @@ layer: kernel
 scope: on-demand
 requires: []
 overridable: true
-version: 1
+version: 2
 ---
 
 # Calibration Rubric & Results Record
@@ -24,7 +24,7 @@ Copy per calibration run. Grading is binary per probe-run: every listed pass cri
 
 ## Candidate
 - Model: <name + exact version/checkpoint>
-- Harness: <agent tool + version>          <!-- placement is (model × harness × config) -->
+- Harness: <agent tool + version>          <!-- placement is (model × harness × effort × config) -->
 - Config: <quant, context window, sampling, **reasoning-effort level**; "vendor default" is a valid answer — but record which level that resolved to, not the word "default">
 - Ensemble: <no | yes — describe topology; calibrated as one unit>
 
@@ -46,7 +46,7 @@ Copy per calibration run. Grading is binary per probe-run: every listed pass cri
 - Utility: qualified / failed (rule: ≤2 probe-run failures across the tier, no probe fails all 3)
 - Implementation: qualified / failed / not tested
 - Reasoning: qualified / failed / not tested
-- **Placed at:** <tier> · **Cost note:** <per-Mtok or local; is it the cheapest qualifier at this tier?>
+- **Placed at:** <tier> @ <effort> · **Cost note:** <per-Mtok or local; is it the cheapest qualifier at this tier and effort?>
 - **Valid until:** recalibration trigger (model/harness/config change) — see workflow
 ```
 
